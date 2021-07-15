@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderProfileMenuComponent } from './header-profile-menu.component';
+import { HeaderProfileMenuComponent } from './nav-profile-menu.component';
 
 describe('HeaderProfileMenuComponent', () => {
   let component: HeaderProfileMenuComponent;

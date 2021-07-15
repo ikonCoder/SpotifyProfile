@@ -1,4 +1,48 @@
+@font-face 
+    font-family: GothamBook
+    src: url(../assets/fonts/GothamBook.woff)    
+
 body
-    margin: 0
     background-color: rgb(24, 24, 24)
-    display: block
+    text-align: center
+    font-family: GothamBook
+    margin: 0
+
+div
+    font-size: 40px
+    color: white
+
+#flex_container
+    width: 100%
+    margin: 0px auto
+    max-width: 1400px
+    display: flex
+    -webkit-box-pack: center
+    justify-content: center
+    -webkit-box-align: center
+    align-items: center
+    flex-direction: column
+    min-height: 100vh
+
+
+#flex_container div
+    font-weight: bold
+    margin-bottom: 30px
+    font-size: 45px
+
+
+button
+    background-color: rgb(29, 185, 84)
+    border: none
+    width: 205px
+    height: 50px
+    border-radius: 50px
+    color: white
+    font-family: 'GothamBook'
+    font-size: 16px
+    font-weight: bold
+
+button:hover
+    cursor: pointer
+    background-color: rgba(29, 185, 84, 0.87)
+
