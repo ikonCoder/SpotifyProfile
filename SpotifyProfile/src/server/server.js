@@ -8,7 +8,7 @@ app.post('/login', (req, res) => {
     const spotifyApi = new SpotifyWebApi({
         redirectUri: 'http://localhost:4200/',
         clientId: '53e2679e63cc4cae9f6b24b8013fd15f',
-        clientSecret:'a8a35d1d5f12460e87c0cf29d3c89851'
+        clientSecret:'a8a35d1d5f12460e87c0cf29d3c89851' //remove this before pushing to prod.
     })
 
     spotifyApi.authorizationCodeGrant(code).then(data => {
