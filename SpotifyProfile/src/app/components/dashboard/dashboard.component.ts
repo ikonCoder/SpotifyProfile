@@ -39,7 +39,5 @@ export class DashboardComponent implements OnInit {
     }else{console.log("Missing access code!!")}
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }
