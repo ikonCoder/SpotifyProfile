@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/nav/nav.component';
 import { HeaderProfileMenuComponent } from './components/nav/nav_profileMenu/nav-profile-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({ 
@@ -15,8 +14,7 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     HeaderComponent,
     HeaderProfileMenuComponent,
-    DashboardComponent,
-    HomeComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
