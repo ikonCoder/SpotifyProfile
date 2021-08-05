@@ -16,7 +16,4 @@ export class HomeComponent implements OnInit {
 
     //Spotify Auth. URL -> points to auth endpoint
     AUTH_URL: string = "https://accounts.spotify.com/authorize?client_id=53e2679e63cc4cae9f6b24b8013fd15f&response_type=code&redirect_uri=http://localhost:4200%2Fdashboard&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
-
-    //code from api request
-     code = new URLSearchParams(window.location.search).get('code');
 }

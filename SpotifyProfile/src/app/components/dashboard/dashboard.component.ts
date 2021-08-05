@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+    //code from api request
+      const code = new URLSearchParams(window.location.search).get('code');
+      console.log("Your access code is: " + code);
+    
+    
   }
 
+  ngOnInit(): void {
+    
+  }
 }
