@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 import axios from 'axios';
-
 
 
 @Component({
@@ -12,10 +10,16 @@ import axios from 'axios';
 export class DashboardComponent implements OnInit {
 
   constructor() { 
+  }
+
+  user_name: any = "Default";
+  user_photo_url: any = "Default";
+
+  ngOnInit() {
     //code from initial api request
     const code = new URLSearchParams(window.location.search).get('code');
 
-    if(code){
+    if(code){      
       //(spotify requries body to be sent application/x-www-form-urlencoded * axios sends data by default as JSON)
       const encodedParams = new URLSearchParams();
       encodedParams.append('grant_type', 'authorization_code');
@@ -30,14 +34,25 @@ export class DashboardComponent implements OnInit {
           }
         }
       )
-      .then(function (response: any) {
-        console.log(response);
+      .then( (response: any) => {
+        if(response.status == 200){
+           //send GET request to /v1/me endpoint to get user data w/ access token
+          const accessToken = response.data.access_token;
+          axios.get('https://api.spotify.com/v1/me', {
+              headers: {
+                Authorization: `Bearer ${accessToken}`
+              }
+            }
+          ).then( (response: any) => {
+              console.log(response);
+              this.user_name = response.data.display_name;
+              this.user_photo_url = response.data.images[0].url;
+          })
+        }
       })
       .catch(function (error: any) {
         console.log(error);
       });
     }else{console.log("Missing access code!!")}
   }
-
-  ngOnInit(): void {}
 }

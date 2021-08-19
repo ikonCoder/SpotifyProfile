@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+
 
 @Component({
   selector: 'nav-profile-menu',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderProfileMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private DashboardComponent: DashboardComponent){}
 
-  ngOnInit(): void {
-  }
+   getDashboardVar(): void {
+    const variable = this.DashboardComponent.user_name;
+    console.log(variable);
+   }
+
+  ngOnInit(): void {}
 
 }
