@@ -8,14 +8,11 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
   styleUrls: ['./nav-profile-menu.component.sass']
 })
 export class HeaderProfileMenuComponent implements OnInit {
+  @Input() username: any;
 
-  constructor(private DashboardComponent: DashboardComponent){}
+  constructor(){}
 
-   getDashboardVar(): void {
-    const variable = this.DashboardComponent.user_name;
-    console.log(variable);
-   }
-
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    console.log("username: " + this.username);
+  }
 }

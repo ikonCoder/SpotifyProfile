@@ -6,9 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav.component.sass']
 })
 export class HeaderComponent{
-  @Input() name: any;
+  @Input() userObj: any;
+  username: any;
 
-  constructor() {
-   }
+  constructor() {}
 
+  ngOnInit(){ 
+    console.log(this.userObj);
+    this.username = JSON.stringify(this.userObj);
+  }
 }

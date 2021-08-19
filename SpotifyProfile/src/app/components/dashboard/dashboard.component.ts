@@ -12,9 +12,11 @@ export class DashboardComponent implements OnInit {
   constructor() { 
   }
 
-  user_name: any = "Default";
-  user_photo_url: any = "Default";
-
+  user = {
+    user_name: "",
+    user_photo_url: ""
+  };
+ 
   ngOnInit() {
     //code from initial api request
     const code = new URLSearchParams(window.location.search).get('code');
@@ -45,8 +47,9 @@ export class DashboardComponent implements OnInit {
             }
           ).then( (response: any) => {
               console.log(response);
-              this.user_name = response.data.display_name;
-              this.user_photo_url = response.data.images[0].url;
+              //assigns values from the response to the user object 
+              this.user.user_name = response.data.display_name;
+              this.user.user_photo_url = response.data.images[0].url;
           })
         }
       })
