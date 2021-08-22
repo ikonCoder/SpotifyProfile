@@ -8,11 +8,18 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
   styleUrls: ['./nav-profile-menu.component.sass']
 })
 export class HeaderProfileMenuComponent implements OnInit {
-  @Input() username: any;
+  @Input() userObj: any;
 
   constructor(){}
 
+   username!: string;
+   profileImg!: string;
+
   ngOnInit(): void {
-    console.log("username: " + this.username);
+    this.username = this.userObj.user_name;
+    this.profileImg = this.userObj.user_photo_url;
+
+    //testing
+    // console.log(JSON.stringify(newArr));
   }
 }

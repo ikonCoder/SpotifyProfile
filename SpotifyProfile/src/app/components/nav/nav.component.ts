@@ -5,14 +5,14 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.sass']
 })
-export class HeaderComponent{
+export class HeaderComponent implements OnInit{
   @Input() userObj: any;
-  username: any;
+  
 
   constructor() {}
 
   ngOnInit(){ 
-    console.log(this.userObj);
-    this.username = JSON.stringify(this.userObj);
+    // testing
+    // console.log(this.userObj);
   }
 }

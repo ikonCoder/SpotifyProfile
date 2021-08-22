@@ -8,20 +8,19 @@ import axios from 'axios';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { 
+  isDataAvailable: boolean = false;
+  user:any = {
+    user_name: "DEFAULT",
+    user_photo_url: "DEFAULT"
   }
 
-  user = {
-    user_name: "",
-    user_photo_url: ""
-  };
- 
+  constructor(){ }
+
   ngOnInit() {
     //code from initial api request
     const code = new URLSearchParams(window.location.search).get('code');
 
-    if(code){      
+    if(code){  
       //(spotify requries body to be sent application/x-www-form-urlencoded * axios sends data by default as JSON)
       const encodedParams = new URLSearchParams();
       encodedParams.append('grant_type', 'authorization_code');
@@ -48,8 +47,17 @@ export class DashboardComponent implements OnInit {
           ).then( (response: any) => {
               console.log(response);
               //assigns values from the response to the user object 
+              let user2 = {
+                user_name: "",
+                user_photo_url: ""
+              }
               this.user.user_name = response.data.display_name;
               this.user.user_photo_url = response.data.images[0].url;
+              this.isDataAvailable = true;
+
+              //testing
+              // console.log(JSON.stringify(this.user));
+
           })
         }
       })
