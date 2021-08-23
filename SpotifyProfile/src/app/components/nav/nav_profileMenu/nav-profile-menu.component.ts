@@ -12,14 +12,28 @@ export class HeaderProfileMenuComponent implements OnInit {
 
   constructor(){}
 
+   dropdownStatus = false;
    username!: string;
    profileImg!: string;
 
   ngOnInit(): void {
     this.username = this.userObj.user_name;
     this.profileImg = this.userObj.user_photo_url;
-
     //testing
     // console.log(JSON.stringify(newArr));
+  }
+
+  navMenuToggle(){
+      let dropdown = document.getElementsByClassName('dropdown') as HTMLCollectionOf<HTMLElement>;
+
+      if(this.dropdownStatus){
+        dropdown[0].style.display="none";
+        this.dropdownStatus = false;
+        console.log("dropdown is..: " + this.dropdownStatus);
+      }else{
+        this.dropdownStatus = true;
+        dropdown[0].style.display="block";
+        console.log("dropdown is..: " + this.dropdownStatus);
+      }
   }
 }

@@ -1,3 +1,12 @@
 <div *ngIf="isDataAvailable">
    <nav [userObj]="user"></nav>
+   <span style="padding:20px; display:block;">
+      <div id="topArtistContainer">
+         <p style="font-weight: bold; font-size:20px;">Top artists this month: </p>
+         <div>
+            <img id="artist_photo"/>
+            <span id="artist_name"></span>
+         </div>
+      </div>
+   </span>
 </div>

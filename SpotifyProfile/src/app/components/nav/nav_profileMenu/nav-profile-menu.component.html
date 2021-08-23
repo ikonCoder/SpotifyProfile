@@ -6,8 +6,16 @@
         <div class="profileName">
             <p id="user_name">{{ username }}</p>
         </div>
-        <div id="arrow">
+        <div id="arrow" (click)="navMenuToggle()">
             <img src="../../../assets/images/down_arrow_white.png" alt="">
+        </div>
+
+        <div class="dropdown">
+            <ul>
+                <li>Profile</li>
+                <li>Light Mode</li>
+                <li>Sign Out</li>
+            </ul>
         </div>
     </div>
 </div>
