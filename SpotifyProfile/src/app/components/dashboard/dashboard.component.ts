@@ -8,23 +8,24 @@ import axios from 'axios';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
+  constructor(){ }
+
+  code = new URLSearchParams(window.location.search).get('code');
+  accessToken = "";
+
   isDataAvailable: boolean = false;
   user:any = {
     user_name: "DEFAULT",
     user_photo_url: "DEFAULT"
   }
 
-  constructor(){ }
-
   ngOnInit() {
     //code from initial api request
-    const code = new URLSearchParams(window.location.search).get('code');
-
-    if(code){  
+    if(this.code){  
       //(spotify requries body to be sent application/x-www-form-urlencoded * axios sends data by default as JSON)
       const encodedParams = new URLSearchParams();
       encodedParams.append('grant_type', 'authorization_code');
-      encodedParams.append('code', code);
+      encodedParams.append('code', this.code);
       encodedParams.append('redirect_uri', 'http://localhost:4200/dashboard');
 
       axios.post('https://accounts.spotify.com/api/token', encodedParams ,
@@ -38,14 +39,13 @@ export class DashboardComponent implements OnInit {
       .then( (response: any) => {
         if(response.status == 200){
            //send GET request to /v1/me endpoint to get user data w/ access token
-          const accessToken = response.data.access_token;
+          this.accessToken = response.data.access_token;
           axios.get('https://api.spotify.com/v1/me', {
               headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${this.accessToken}`
               }
             }
           ).then( (response: any) => {
-              console.log(response);
               //assigns values from the response to the user object 
               let user2 = {
                 user_name: "",
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
               //testing
               // console.log(JSON.stringify(this.user));
-
+              // console.log(response);
           })
         }
       })
@@ -65,5 +65,27 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       });
     }else{console.log("Missing access code!!")}
+
+    if(this.accessToken != ""){
+      this.getRecentLikedSongs();
+    }else{
+      console.log("Missing access token!!")
+      console.log(this.accessToken)
+    }
+  }
+
+  getRecentLikedSongs() {
+    console.log("here")
+    axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me',
+      responseType: 'stream',
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`
+      }
+    })  
+    .then(function (response) {
+      console.log(response);
+    });
   }
 }
