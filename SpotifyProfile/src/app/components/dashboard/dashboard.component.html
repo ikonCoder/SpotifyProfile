@@ -2,12 +2,14 @@
    <nav [userObj]="user"></nav>
    <span style="padding:50px; display:block;">
       <div id="topArtistContainer">
-         <p style="font-weight: bold; font-size:2rem; margin-bottom:0px;">Recently saved tracks: </p>
+         <p style="font-weight: bold; font-size:2.25rem; margin-bottom:0px;">Recently saved tracks: </p>
 
-         <span id="" class="row">
-            <div id="savedTracksContainer" class="col-sm col-md aos-init aos-animate">
-               <img id="artist_photo"/>
-               <span id="artist_name"></span> 
+         <span id="" class="row" style="text-align: center;display: block;">
+            <div *ngFor="let favSongs of user.favSongs" 
+            id="savedTracksContainer" class="col-sm col-md aos-init aos-animate">
+               <img id="artist_photo" src="{{ favSongs.track.album.images[0].url | json }}"/>
+               <span id="artist_name">{{ favSongs.track.name | json }}</span>
+               <span id="artist_cat">{{ favSongs.track.artists[0].name | json }}</span> 
             </div>
          </span>
          

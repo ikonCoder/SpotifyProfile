@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import axios from 'axios';
 
 
@@ -9,15 +10,16 @@ import axios from 'axios';
 })
 export class DashboardComponent implements OnInit {
   
-  constructor(){ }
+  constructor(private sanitizer: DomSanitizer) {}
 
   code = new URLSearchParams(window.location.search).get('code');
   accessToken = "";
-
   isDataAvailable: boolean = false;
+
   user:any = {
     user_name: "DEFAULT",
-    user_photo_url: "DEFAULT"
+    user_photo_url: "DEFAULT",
+    favSongs: [],
   }
 
   ngOnInit() {
@@ -70,17 +72,18 @@ export class DashboardComponent implements OnInit {
   }
 
   getRecentLikedSongs() {
-    console.log("here")
+    console.log("Getting recently liked songs.....")
     axios({
       method: 'get',
-      url: 'https://api.spotify.com/v1/me/tracks',
+      url: 'https://api.spotify.com/v1/me/tracks?limit=6',
       responseType: 'stream',
       headers: {
         Authorization: `Bearer ${this.accessToken}`
       }
     })  
-    .then(function (response) {
-      console.log(response);
+    .then( (response: any) => {
+      this.user.favSongs = response.data.items;
+      // console.log(sanitizedData);
     });
   }
 }
