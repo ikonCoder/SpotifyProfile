@@ -1,12 +1,16 @@
 <div *ngIf="isDataAvailable">
    <nav [userObj]="user"></nav>
-   <span style="padding:20px; display:block;">
+   <span style="padding:50px; display:block;">
       <div id="topArtistContainer">
-         <p style="font-weight: bold; font-size:20px;">Recently liked songs: </p>
-         <div>
-            <img id="artist_photo"/>
-            <span id="artist_name"></span> 
-         </div>
+         <p style="font-weight: bold; font-size:2rem; margin-bottom:0px;">Recently saved tracks: </p>
+
+         <span id="" class="row">
+            <div id="savedTracksContainer" class="col-sm col-md aos-init aos-animate">
+               <img id="artist_photo"/>
+               <span id="artist_name"></span> 
+            </div>
+         </span>
+         
       </div>
    </span>
 </div>

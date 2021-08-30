@@ -8,6 +8,7 @@ import axios from 'axios';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
+  
   constructor(){ }
 
   code = new URLSearchParams(window.location.search).get('code');
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
               this.user.user_name = response.data.display_name;
               this.user.user_photo_url = response.data.images[0].url;
               this.isDataAvailable = true;
+              this.getRecentLikedSongs();
 
               //testing
               // console.log(JSON.stringify(this.user));
@@ -65,20 +67,13 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       });
     }else{console.log("Missing access code!!")}
-
-    if(this.accessToken != ""){
-      this.getRecentLikedSongs();
-    }else{
-      console.log("Missing access token!!")
-      console.log(this.accessToken)
-    }
   }
 
   getRecentLikedSongs() {
     console.log("here")
     axios({
       method: 'get',
-      url: 'https://api.spotify.com/v1/me',
+      url: 'https://api.spotify.com/v1/me/tracks',
       responseType: 'stream',
       headers: {
         Authorization: `Bearer ${this.accessToken}`
