@@ -17,12 +17,14 @@ export class DashboardComponent implements OnInit {
   isDataAvailable: boolean = false;
 
   user:any = {
-    user_name: "DEFAULT",
-    user_photo_url: "DEFAULT",
+    user_name: "",
+    user_photo_url: "",
     favSongs: [],
   }
 
   ngOnInit() {
+    this.getNewAccess();//grabs new access code needed after reload
+    
     //code from initial api request
     if(this.code){  
       //(spotify requries body to be sent application/x-www-form-urlencoded * axios sends data by default as JSON)
@@ -68,7 +70,25 @@ export class DashboardComponent implements OnInit {
       .catch(function (error: any) {
         console.log(error);
       });
-    }else{console.log("Missing access code!!")}
+    }else{
+      console.log("Missing access code!!");
+      this.getNewAccess();
+    }
+  }
+
+
+
+  getNewAccess(){ 
+    //run on page load to get new access code and inturn a new access token 
+
+    //check for Navigation Timing API support
+    if (window.performance) {
+      console.info("window.performance works fine on this browser");
+    }
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+      console.info( "This page is reloaded" );
+      document.location.href = "https://accounts.spotify.com/authorize?client_id=53e2679e63cc4cae9f6b24b8013fd15f&response_type=code&redirect_uri=http://localhost:4200%2Fdashboard&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+    } 
   }
 
   getRecentLikedSongs() {
@@ -83,7 +103,8 @@ export class DashboardComponent implements OnInit {
     })  
     .then( (response: any) => {
       this.user.favSongs = response.data.items;
-      // console.log(sanitizedData);
+      console.log(this.user);
     });
   }
+
 }
