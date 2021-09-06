@@ -8,6 +8,7 @@ import axios from 'axios';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
+
 export class DashboardComponent implements OnInit {
   
   constructor(private sanitizer: DomSanitizer) {}
@@ -79,8 +80,6 @@ export class DashboardComponent implements OnInit {
 
 
   getNewAccess(){ 
-    //run on page load to get new access code and inturn a new access token 
-
     //check for Navigation Timing API support
     if (window.performance) {
       console.info("window.performance works fine on this browser");
@@ -89,6 +88,14 @@ export class DashboardComponent implements OnInit {
       console.info( "This page is reloaded" );
       document.location.href = "https://accounts.spotify.com/authorize?client_id=53e2679e63cc4cae9f6b24b8013fd15f&response_type=code&redirect_uri=http://localhost:4200%2Fdashboard&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
     } 
+  }
+
+  sanitizeURL(){
+    console.log("Cleaning urls.....");
+    // let string = this.user.favSongs[0].track.album.images[0].url;
+    // let newString = this.sanitizer.bypassSecurityTrustUrl(string);
+    //   this.user.favSongs[0].track.album.images[0].url = newString;
+    //   console.log(this.user.favSongs[0].track.album.images[0].url);
   }
 
   getRecentLikedSongs() {
@@ -103,7 +110,14 @@ export class DashboardComponent implements OnInit {
     })  
     .then( (response: any) => {
       this.user.favSongs = response.data.items;
-      console.log(this.user);
+
+      // for(let i=0; i < response.data.items.length; i++){
+      //     let cleanedURL = this.sanitizeURL(response.data.items[i].track.album.images[i].url);
+      //     console.log(cleanedURL);
+      // }
+      console.log(response.data.items);
+      //change array value with safe urls?
+      // this.sanitizeURL();
     });
   }
 
