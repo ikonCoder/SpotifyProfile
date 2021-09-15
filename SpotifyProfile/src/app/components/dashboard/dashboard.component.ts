@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit {
     console.log("Getting recently liked songs.....")
     axios({
       method: 'get',
-      url: 'https://api.spotify.com/v1/me/tracks?limit=6',
+      url: 'https://api.spotify.com/v1/me/tracks?limit=5',
       responseType: 'stream',
       headers: {
         Authorization: `Bearer ${this.accessToken}`
