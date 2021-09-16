@@ -7,9 +7,9 @@
          <span id="" class="row" style="text-align: center;display: block;">
             <div *ngFor="let favSongs of user.favSongs" 
             id="savedTracksContainer" class="col-sm col-md aos-init aos-animate">
-               <img id="artist_photo" src="{{ favSongs.track.album.images[0].url | json }}"/>
-               <span id="song_name">{{ favSongs.track.name | json }}</span>
-               <span id="artist_name">{{ favSongs.track.artists[0].name | json }}</span> 
+               <img id="artist_photo" src="{{ favSongs.track.album.images[0].url }}"/>
+               <span id="song_name">{{ favSongs.track.name }}</span>
+               <span id="artist_name">{{ favSongs.track.artists[0].name }}</span> 
             </div>
          </span>
          
