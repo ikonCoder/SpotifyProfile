@@ -33,8 +33,10 @@
       <div id="mpContainer" class="row">
          <div id="mpsPhotoContainer" class="col-sm col-md">
             <img src="{{ user.mostListenedToSong.albumCoverUrl }}" alt="">
+            <h6>{{ user.mostListenedToSong.songArtistName }}</h6>
+            <h5>{{ user.mostListenedToSong.songTitle }}</h5>
          </div>
-         <div id="mostPlayedSongTitle" class="col-sm col-md">Most Played Song <br> Of 2021</div>
+         <div id="mostPlayedSongTitle" class="col-sm col-md">Most Played Song <br> Of <span style="border-bottom: solid 2px #1ed760;">2021</span></div>
       </div>
    </span>
 </div>

@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     user_photo_url: "",
     favSongs: [],
     mostListenedToSong: {
-      songTile: "",
+      songTilte: "",
       albumCoverUrl: ""
     }
   }
@@ -119,8 +119,9 @@ export class DashboardComponent implements OnInit {
       }
     })  
     .then( (response: any) => {
-      this.user.mostListenedToSong.songTile = response.data.items[0].name;
+      this.user.mostListenedToSong.songTitle = response.data.items[0].name;
       this.user.mostListenedToSong.albumCoverUrl = response.data.items[0].album.images[0].url;
+      this.user.mostListenedToSong.songArtistName = response.data.items[0].artists[0].name;
       console.log(response.data.items);
       console.log(this.user.mostListenedToSong.albumCoverUrl);
     });
