@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
               this.user.user_photo_url = response.data.images[0].url;
               this.isDataAvailable = true;
               this.getRecentLikedSongs();
-              this.getMostListenToSong();
+              this.getMostListenedToSong();
 
               //testing
               // console.log(JSON.stringify(this.user));
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
     }
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
       console.info( "This page is reloaded" );
-      document.location.href = "https://accounts.spotify.com/authorize?client_id=53e2679e63cc4cae9f6b24b8013fd15f&response_type=code&redirect_uri=http://localhost:4200%2Fdashboard&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+      document.location.href = "https://accounts.spotify.com/authorize?client_id=53e2679e63cc4cae9f6b24b8013fd15f&response_type=code&redirect_uri=http://localhost:4200%2Fdashboard&scope=user-top-read%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
     } 
   }
 
@@ -100,7 +100,6 @@ export class DashboardComponent implements OnInit {
     axios({
       method: 'get',
       url: 'https://api.spotify.com/v1/me/tracks?limit=5',
-      responseType: 'stream',
       headers: {
         Authorization: `Bearer ${this.accessToken}`
       }
@@ -110,19 +109,20 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getMostListenToSong(){
-    console.log("Getting most listed to song of the year.....")
+  getMostListenedToSong(){
+    console.log("Getting most listened to song of the year.....")
     axios({
       method: 'get',
-      url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term',
-      responseType: 'stream',
+      url: "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1",
       headers: {
         Authorization: `Bearer ${this.accessToken}`
       }
     })  
     .then( (response: any) => {
-      // this.user.favSongs = response.data.items;
-      console.log(response.data);
+      this.user.mostListenedToSong.songTile = response.data.items[0].name;
+      this.user.mostListenedToSong.albumCoverUrl = response.data.items[0].album.images[0].url;
+      console.log(response.data.items);
+      console.log(this.user.mostListenedToSong.albumCoverUrl);
     });
   }
 
