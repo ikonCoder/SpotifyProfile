@@ -21,6 +21,10 @@ export class DashboardComponent implements OnInit {
     user_name: "",
     user_photo_url: "",
     favSongs: [],
+    mostListenedToSong: {
+      songTile: "",
+      albumCoverUrl: ""
+    }
   }
 
   ngOnInit() {
@@ -61,6 +65,7 @@ export class DashboardComponent implements OnInit {
               this.user.user_photo_url = response.data.images[0].url;
               this.isDataAvailable = true;
               this.getRecentLikedSongs();
+              this.getMostListenToSong();
 
               //testing
               // console.log(JSON.stringify(this.user));
@@ -90,14 +95,6 @@ export class DashboardComponent implements OnInit {
     } 
   }
 
-  sanitizeURL(){
-    console.log("Cleaning urls.....");
-    // let string = this.user.favSongs[0].track.album.images[0].url;
-    // let newString = this.sanitizer.bypassSecurityTrustUrl(string);
-    //   this.user.favSongs[0].track.album.images[0].url = newString;
-    //   console.log(this.user.favSongs[0].track.album.images[0].url);
-  }
-
   getRecentLikedSongs() {
     console.log("Getting recently liked songs.....")
     axios({
@@ -110,14 +107,22 @@ export class DashboardComponent implements OnInit {
     })  
     .then( (response: any) => {
       this.user.favSongs = response.data.items;
+    });
+  }
 
-      // for(let i=0; i < response.data.items.length; i++){
-      //     let cleanedURL = this.sanitizeURL(response.data.items[i].track.album.images[i].url);
-      //     console.log(cleanedURL);
-      // }
-      console.log(response.data.items);
-      //change array value with safe urls?
-      // this.sanitizeURL();
+  getMostListenToSong(){
+    console.log("Getting most listed to song of the year.....")
+    axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term',
+      responseType: 'stream',
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`
+      }
+    })  
+    .then( (response: any) => {
+      // this.user.favSongs = response.data.items;
+      console.log(response.data);
     });
   }
 
