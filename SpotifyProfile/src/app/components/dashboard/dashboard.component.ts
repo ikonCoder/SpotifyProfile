@@ -127,4 +127,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
+
+
+  infoIconShow(){
+    console.log("info icon should show now..");
+  }
 }

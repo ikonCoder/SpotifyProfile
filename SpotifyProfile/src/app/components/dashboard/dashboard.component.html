@@ -7,29 +7,34 @@
          <div class="row" style="justify-content: center; padding-top: 30px; margin: 0; margin-left: -15px;">
             <div class="col-sm col-sm sm_custom">
                <span style="display: block; text-align: center; color: #1ed760; font-size: 17.5px;">7</span>
-               <span style="font-weight: bold; font-size: 19px;">Followers</span>
+               <span style="font-weight: bold; font-size: 15px; letter-spacing: 1px;">Followers</span>
             </div>
             <div class="col-sm col-sm sm_custom">
                <span style="display: block; text-align: center; color: #1ed760; font-size: 17.5px;">22</span>
-               <span style="font-weight: bold; font-size: 19px;">Following</span>
+               <span style="font-weight: bold; font-size: 15px; letter-spacing: 1px;">Following</span>
             </div>
             <div class="col-sm col-sm sm_custom">
                <span style="display: block; text-align: center; color: #1ed760; font-size: 17.5px;">18</span>
-               <span style="font-weight: bold; font-size: 19px;">Playlist</span>
+               <span style="font-weight: bold; font-size: 15px; letter-spacing: 1px;">Playlist</span>
             </div>
          </div>
       </div>
+
       <div id="topArtistContainer">
-         <p style="font-weight: bold; font-size:2rem; margin-bottom:0px; letter-spacing:1.5px; margin-left: 60px;">Recently saved tracks: </p>
-         <span id="" class="row" style="text-align: center;display: block;">
+         <span id="" class="row" style="text-align: center;display: block; max-width: 1500px; margin: 0 auto;">
+            <p style="font-weight: bold; font-size:2.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Recently saved tracks: </p>
             <div *ngFor="let favSongs of user.favSongs" 
             id="savedTracksContainer" class="col-sm col-md">
+               <span id="infoHoverContainer">
+                  <img id="infoIcon" src="../../../assets/images/information.png" alt="info_icon">
+               </span>
                <img id="artist_photo" src="{{ favSongs.track.album.images[0].url }}"/>
                <span id="song_name">{{ favSongs.track.name }}</span>
                <span id="artist_name">{{ favSongs.track.artists[0].name }}</span> 
             </div>
          </span>   
       </div>
+
       <div id="mpContainer" class="row">
          <div id="mpsPhotoContainer" class="col-sm col-md">
             <img src="{{ user.mostListenedToSong.albumCoverUrl }}" alt="">
@@ -37,6 +42,10 @@
             <h5>{{ user.mostListenedToSong.songTitle }}</h5>
          </div>
          <div id="mostPlayedSongTitle" class="col-sm col-md">Most Played Song <br> Of <span style="border-bottom: solid 2px #1ed760;">2021</span></div>
+      </div>
+
+      <div>
+
       </div>
    </span>
 </div>
