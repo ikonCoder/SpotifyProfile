@@ -1,10 +1,12 @@
 nav
     position: fixed
     z-index: 2000
+    top: 0
 
 
 #profile_info_container
-    margin: 150px 0 150px 0
+    margin: 150px 0 0 0
+    height: 120vh
 
 #profile_picture
     border-radius: 100px
@@ -21,6 +23,8 @@ nav
     font-weight: bold
 
 
+#topArtistContainer
+    height: 100vh
 
 #savedTracksContainer
     min-width: 250px
@@ -77,12 +81,15 @@ nav
 #mpContainer
     max-width: 1200px
     margin: 0 auto
-    height: 500px
+    height: 100vh
     margin-top: 100px
 
 #mpsPhotoContainer
     padding: 0px
     margin: 10px 13px
+    position: relative
+    display: flex
+    align-items: center
 
     img
         width: 500px
@@ -90,14 +97,21 @@ nav
         font-size: 2.7rem
         font-weight: bold
         text-align: right
-        margin-top: -100px
-        margin-right: 15px
+        background-color: black
+        position: absolute
+        right: 15px
+        padding: 10px
+        bottom: 200px
     h5
         font-size: 1.5rem
         font-weight: bold
         text-align: right
         margin-top: -5px
-        margin-right: 15px
+        position: absolute
+        right: 15px
+        background-color: black
+        bottom: 148px
+        padding: 10px
 
 #mostPlayedSongTitle
     text-align: right
@@ -105,7 +119,13 @@ nav
     font-size: 3.5rem
     margin-bottom: 0px
     letter-spacing: 1.5px
-    margin-top: 200px
+    display: flex
+    align-items: center
 
 .sm_custom
     flex: 0 0 0%
+
+
+
+#playlistContainer
+    height: 100vh

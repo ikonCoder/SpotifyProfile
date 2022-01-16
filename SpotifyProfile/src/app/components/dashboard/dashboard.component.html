@@ -1,6 +1,6 @@
 <div *ngIf="isDataAvailable">
    <nav [userObj]="user"></nav>
-   <span style="padding:50px;">
+   <span>
       <div id="profile_info_container">
          <img src="{{ user.user_photo_url }}" alt="profile_picture" id="profile_picture">
          <p id="user_name">{{ user.user_name }}</p>
@@ -22,7 +22,7 @@
 
       <div id="topArtistContainer">
          <span id="" class="row" style="text-align: center;display: block; max-width: 1500px; margin: 0 auto;">
-            <p style="font-weight: bold; font-size:2.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Recently saved tracks: </p>
+            <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Recently saved tracks: </p>
             <div *ngFor="let favSongs of user.favSongs" 
             id="savedTracksContainer" class="col-sm col-md">
                <span id="infoHoverContainer">
@@ -41,11 +41,26 @@
             <h6>{{ user.mostListenedToSong.songArtistName }}</h6>
             <h5>{{ user.mostListenedToSong.songTitle }}</h5>
          </div>
-         <div id="mostPlayedSongTitle" class="col-sm col-md">Most Played Song <br> Of <span style="border-bottom: solid 2px #1ed760;">2021</span></div>
+         <div id="mostPlayedSongTitle" class="col-sm col-md">
+            <span>Most Played Song Of <span style="border-bottom:1px solid #1ed760">2021</span></span>
+         </div>
       </div>
 
       <div>
-
+         <div id="playlistContainer">
+            <span id="" class="row" style="text-align: center;display: block; max-width: 1500px; margin: 0 auto;">
+               <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Top Playlist:</p>
+               <div *ngFor="let favSongs of user.favSongs" 
+               id="savedTracksContainer" class="col-sm col-md">
+                  <span id="infoHoverContainer">
+                     <img id="infoIcon" src="../../../assets/images/information.png" alt="info_icon">
+                  </span>
+                  <img id="artist_photo" src="{{ favSongs.track.album.images[0].url }}"/>
+                  <span id="song_name">{{ favSongs.track.name }}</span>
+                  <span id="artist_name">{{ favSongs.track.artists[0].name }}</span> 
+               </div>
+            </span>   
+         </div>
       </div>
    </span>
 </div>
