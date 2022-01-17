@@ -8,6 +8,7 @@ import { HeaderProfileMenuComponent } from './components/nav/nav_profileMenu/nav
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({ 
@@ -16,7 +17,8 @@ import { HomeComponent } from './components/home/home.component';
     HeaderComponent,
     HeaderProfileMenuComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
