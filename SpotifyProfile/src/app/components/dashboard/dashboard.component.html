@@ -57,18 +57,19 @@
       <div>
          <div id="playlistContainer">
             <span id="" class="row" style="text-align: center;display: block; max-width: 1500px; margin: 0 auto;">
-               <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Playlists:</p>
+               <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:center; ">Playlists:</p>
 
                <div *ngFor="let userPlaylists of user.playlists" 
                id="playlist_data_container" class="col-sm col-md">
                   <span id="playlist_name">{{ userPlaylists.name }}</span>
+                  <a href=""><span id="playlist_link_bttn"> Go to playlist </span></a>
 
                   <span>
                      <img id="playlist_photo" src="{{  userPlaylists.images[0].url }}"/>
                   </span>
                </div>
 
-               <p style="text-align: center; width: 40%; margin-left: 45px; margin-top: 20px;">Show more.</p>
+               <!-- <p style="text-align: center; width: 100%; margin-top: 20px;">Show more.</p> -->
             </span>   
          </div>
       </div>
