@@ -5,13 +5,14 @@ nav
 
 
 #profile_info_container
-    margin: 150px 0 0 0
-    height: 120vh
+    margin: 80px 0 0 0
+    padding-top: 7vh
+    height: 100vh
 
 #profile_picture
-    border-radius: 100px
-    height:200px
-    width: 200px
+    border-radius: 2200px
+    height: 340px
+    width: 340px
     margin: 0 auto
     display: block
 
@@ -23,8 +24,41 @@ nav
     font-weight: bold
 
 
+#rightHeaderContainer
+    margin: 100px 0 0 0
+
+#searchContainer
+    margin: 0 auto
+    text-align: center
+
+#searchBox
+    color: white
+    height: 50px
+    width: 350px
+    text-align: center
+    background-color: transparent
+    border: 0
+    border-bottom: 1px white solid
+
+#searchBox::placeholder
+    text-align: center
+
+#searchBox:focus
+    outline: none !important
+
+#vertLine
+    background-image: url(/../assets/images/vertLine.svg)
+    width: 2px
+    height: 12vh
+    display: block
+    margin: 0 auto
+    margin-top: 5vh
+    margin-bottom: 10px
+
+
+
 #topArtistContainer
-    height: 100vh
+    height: 80vh
 
 #savedTracksContainer
     min-width: 250px
@@ -42,7 +76,7 @@ nav
 #savedTracksContainer:hover
     background-color: #343434
     cursor: pointer
-    box-shadow: 0px 0px 20px 6px #2a2a2a59
+    box-shadow: 0px 0px 50px 6px #000000
 
 #artist_photo
     display: block
@@ -81,8 +115,8 @@ nav
 #mpContainer
     max-width: 1200px
     margin: 0 auto
+    margin-bottom: 100px
     height: 100vh
-    margin-top: 100px
 
 #mpsPhotoContainer
     padding: 0px
@@ -128,4 +162,51 @@ nav
 
 
 #playlistContainer
-    height: 100vh
+    height: 100%
+    margin-bottom: 100px
+
+#playlist_data_container
+    min-height: 100px
+    background-color: #2a2a2a
+    border-radius: 4px
+    margin: 10px 13px
+    margin-left: 45px
+    text-align: left
+    position: relative
+    box-shadow: 0px 0px 9px 1px #2a2a2a59
+    display: block
+    width: 40%
+
+#playlist_data_container2
+    min-height: 115px
+    background-color: #2a2a2a
+    border-radius: 4px
+    display: inline-block
+    margin: 10px 13px
+    text-align: left
+    position: relative
+    box-shadow: 0px 0px 9px 1px #2a2a2a59
+    display: inline-table
+    float: right
+    width: 50%
+    
+#playlist_data_container:hover
+    background-color: #343434
+    cursor: pointer
+    box-shadow: 0px 0px 50px 6px #000000
+
+#playlist_name
+    margin-left: 10px
+    text-align: left
+    display: inline-block
+    font-weight: bold
+    font-size: 16px
+    line-height: 115px
+
+#playlist_photo
+    height: 100px
+    position: absolute
+    top: 0
+    bottom: 0
+    margin: auto
+    right: 10px

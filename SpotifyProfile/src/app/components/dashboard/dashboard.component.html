@@ -18,6 +18,14 @@
                <span style="font-weight: bold; font-size: 15px; letter-spacing: 1px;">Playlist</span>
             </div>
          </div>
+
+         <div id="rightHeaderContainer">
+            <div id="searchContainer">
+               <input id="searchBox" placeholder="Search artist, songs, and genres">
+            </div>
+         </div>
+
+         <span id="vertLine"></span>
       </div>
 
       <div id="topArtistContainer">
@@ -49,16 +57,18 @@
       <div>
          <div id="playlistContainer">
             <span id="" class="row" style="text-align: center;display: block; max-width: 1500px; margin: 0 auto;">
-               <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Top Playlist:</p>
-               <div *ngFor="let favSongs of user.favSongs" 
-               id="savedTracksContainer" class="col-sm col-md">
-                  <span id="infoHoverContainer">
-                     <img id="infoIcon" src="../../../assets/images/information.png" alt="info_icon">
+               <p style="font-weight: bold; font-size:3.5rem; margin-bottom:0px; letter-spacing:1.5px; text-align:left; margin-left: 35px;">Playlists:</p>
+
+               <div *ngFor="let userPlaylists of user.playlists" 
+               id="playlist_data_container" class="col-sm col-md">
+                  <span id="playlist_name">{{ userPlaylists.name }}</span>
+
+                  <span>
+                     <img id="playlist_photo" src="{{  userPlaylists.images[0].url }}"/>
                   </span>
-                  <img id="artist_photo" src="{{ favSongs.track.album.images[0].url }}"/>
-                  <span id="song_name">{{ favSongs.track.name }}</span>
-                  <span id="artist_name">{{ favSongs.track.artists[0].name }}</span> 
                </div>
+
+               <p style="text-align: center; width: 40%; margin-left: 45px; margin-top: 20px;">Show more.</p>
             </span>   
          </div>
       </div>

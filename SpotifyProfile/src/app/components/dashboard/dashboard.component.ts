@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     user_name: "",
     user_photo_url: "",
     favSongs: [],
+    playlists: [],
     mostListenedToSong: {
       songTilte: "",
       albumCoverUrl: ""
@@ -66,6 +67,7 @@ export class DashboardComponent implements OnInit {
               this.isDataAvailable = true;
               this.getRecentLikedSongs();
               this.getMostListenedToSong();
+              this.getPlaylistData();
 
               //testing
               // console.log(JSON.stringify(this.user));
@@ -128,7 +130,20 @@ export class DashboardComponent implements OnInit {
   }
 
 
-
+  getPlaylistData(){
+    console.log("Getting users playlist data.....")
+    axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/playlists?limit5',
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`
+      }
+    })  
+    .then( (response: any) => {
+      this.user.playlists = response.data.items;
+      console.log(this.user.playlists);
+    });
+  }
 
   infoIconShow(){
     console.log("info icon should show now..");
