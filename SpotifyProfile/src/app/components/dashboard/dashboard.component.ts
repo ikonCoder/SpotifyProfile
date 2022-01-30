@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
                 user_photo_url: ""
               }
               this.user.user_name = response.data.display_name;
-              this.user.user_photo_url = response.data.images[0].url;
+              this.user.user_photo_url = response.data?.images[0].url;
               this.isDataAvailable = true;
               this.getRecentLikedSongs();
               this.getMostListenedToSong();
@@ -143,6 +143,11 @@ export class DashboardComponent implements OnInit {
       this.user.playlists = response.data.items;
       console.log(this.user.playlists);
     });
+  }
+
+  
+  searchActive(){
+    
   }
 
   infoIconShow(){
