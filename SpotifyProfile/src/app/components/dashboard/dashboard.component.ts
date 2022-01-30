@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   isDataAvailable: boolean = false;
 
   user:any = {
+    searchArr: [],
     user_name: "",
     user_photo_url: "",
     favSongs: [],
@@ -146,8 +147,16 @@ export class DashboardComponent implements OnInit {
   }
 
   
-  searchActive(){
-    
+  searchActive(value: any){
+    console.log("user is typing..");
+
+    this.user.searchArr.push(value.data)
+
+    if(value.data === null){
+      console.log("backspace has been pressed");
+      this.user.searchArr.pop();
+    }
+    console.log(this.user.searchArr);
   }
 
   infoIconShow(){

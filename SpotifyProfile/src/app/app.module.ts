@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResultsComponent } from './components/results/results.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({ 
@@ -20,7 +21,8 @@ import { ResultsComponent } from './components/results/results.component';
     DashboardComponent,
     HomeComponent,
     FooterComponent,
-    ResultsComponent
+    ResultsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
