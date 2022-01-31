@@ -150,11 +150,11 @@ export class DashboardComponent implements OnInit {
   searchActive(value: any){
     console.log("user is typing..");
 
-    this.user.searchArr.push(value.data)
-
     if(value.data === null){
       console.log("backspace has been pressed");
       this.user.searchArr.pop();
+    }else{
+      this.user.searchArr.push(value.data)
     }
     console.log(this.user.searchArr);
   }
