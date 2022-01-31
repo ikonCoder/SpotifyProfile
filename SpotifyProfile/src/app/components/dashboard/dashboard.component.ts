@@ -148,15 +148,28 @@ export class DashboardComponent implements OnInit {
 
   
   searchActive(value: any){
-    console.log("user is typing..");
-
     if(value.data === null){
-      console.log("backspace has been pressed");
       this.user.searchArr.pop();
     }else{
       this.user.searchArr.push(value.data)
     }
+
     console.log(this.user.searchArr);
+    this.search();
+  }
+
+  search(){
+    console.log("Searching.....")
+    axios({
+      method: 'get',
+      url: "https://api.spotify.com/v1/search?q=drake&type=artist",
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`
+      }
+    })  
+    .then( (response: any) => {
+      console.log(response.data);
+    });
   }
 
   infoIconShow(){
