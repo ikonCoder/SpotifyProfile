@@ -154,22 +154,30 @@ export class DashboardComponent implements OnInit {
       this.user.searchArr.push(value.data)
     }
 
-    console.log(this.user.searchArr);
-    this.search();
+    let searchString = this.user.searchArr.join('');
+    this.search(searchString);
   }
 
-  search(){
-    console.log("Searching.....")
-    axios({
-      method: 'get',
-      url: "https://api.spotify.com/v1/search?q=drake&type=artist",
-      headers: {
-        Authorization: `Bearer ${this.accessToken}`
-      }
-    })  
-    .then( (response: any) => {
-      console.log(response.data);
-    });
+  search(searchString: string){
+    //don't call endpoint if the search array is empty
+    if(this.user.searchArr.length == 0)
+    {
+      console.log("Search field is empty. Not performing search.")
+    }
+    else
+    {
+      console.log("Searching.....")
+      axios({
+        method: 'get',
+        url: `https://api.spotify.com/v1/search?q=${searchString}&type=artist,track,album`,
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`
+        }
+      })  
+      .then( (response: any) => {
+        console.log(response.data);
+      });
+    }
   }
 
   infoIconShow(){
